@@ -1,0 +1,40 @@
+/* Exercise 4
+Objective: Retrieve detailed order information.
+Tables: Customers, Orders, Books
+Task: Write a query to display the customer name, book title, and quantity for each order.
+Expected Outcome: A list of all orders with customer names, book titles, and quantities. */
+
+CREATE TABLE Customers (
+    CustomerID int PRIMARY KEY,
+    Name text,
+    Email text
+);
+
+INSERT INTO Customers (CustomerID, Name, Email) VALUES (1, 'Amanda Feely', 'amanda@test.com');
+INSERT INTO Customers (CustomerID, Name, Email) VALUES (2, 'Adalynn Porter', 'adalynn@test.com');
+
+CREATE TABLE Books (
+    BookID int PRIMARY KEY,
+    Title text
+    
+);
+INSERT INTO Books (BookID, Title) VALUES (1, 'Harry Potter');
+INSERT INTO Books (BookID, Title) VALUES (2, 'The Hobbit');
+
+CREATE TABLE Orders (
+    OrderID int PRIMARY KEY,
+    CustomerID int,
+    BookID int,
+    Quantity int,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID)
+);
+
+INSERT INTO Orders (OrderID, CustomerID, BookID, Quantity) VALUES (1, 1, 1, 2);
+INSERT INTO Orders (OrderID, CustomerID, BookID, Quantity) VALUES (2, 2, 2, 1);
+
+
+SELECT Customers.Name, Books.Title, Orders.Quantity
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+INNER JOIN Books ON Orders.BookID = Books.BookID;
