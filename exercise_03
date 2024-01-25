@@ -1,0 +1,24 @@
+/*  Exercise 3
+Objective: Delete a customer from the Customers table.
+Table: Customers
+Task: Remove the customer with CustomerID 3 from the table.
+Expected Outcome: The table should no longer include the customer with CustomerID 3. */
+
+CREATE TABLE Customers (
+    CustomerID int,
+    Name text,
+    Email text
+);
+
+INSERT INTO Customers (CustomerID, Name, Email) VALUES (1, 'Alice Johnson', 'alice.johnson@email.com');
+INSERT INTO Customers (CustomerID, Name, Email) VALUES (2, 'Bob Smith', 'bob.smith@email.com');
+INSERT INTO Customers (CustomerID, Name, Email) VALUES (3, 'Charlie Brown', 'charlie.brown@email.com');
+
+UPDATE Customers
+SET Email = 'alice.johnson@new.com'
+WHERE CustomerID = 1;
+
+DELETE FROM Customers
+WHERE CustomerID = 3;
+
+SELECT * From Customers
