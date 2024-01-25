@@ -1,0 +1,31 @@
+/* Exercise 5
+Objective: Normalize a denormalized table.
+Table: StudentGrades (denormalized)
+Columns: StudentID, Name, Subject, Grade
+Task: Split the StudentGrades table into two tables: Students and Grades, ensuring normalization.
+Expected Outcome: Two tables, Students with StudentID and Name columns, and Grades with StudentID, Subject, and Grade columns. */
+
+CREATE TABLE Students (
+    StudentID int PRIMARY KEY,
+    Name string
+);
+
+INSERT INTO Students (StudentID, Name)
+VALUES
+(1, 'Amanda'),
+(2, 'Brandon'),
+(3, 'Brooklynn');
+
+CREATE TABLE Grades (
+    StudentID int,
+    Subject string,
+    Grade int,
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+);
+
+INSERT INTO Grades (StudentID, Subject, Grade) VALUES
+(1, 'Math', '85'),
+(2, 'Science', '95'),
+(3, 'History', '100');
+
+SELECT * FROM Students INNER JOIN Grades ON Students.StudentID = Grades.StudentID;
