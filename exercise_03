@@ -14,10 +14,6 @@ INSERT INTO Customers (CustomerID, Name, Email) VALUES (1, 'Alice Johnson', 'ali
 INSERT INTO Customers (CustomerID, Name, Email) VALUES (2, 'Bob Smith', 'bob.smith@email.com');
 INSERT INTO Customers (CustomerID, Name, Email) VALUES (3, 'Charlie Brown', 'charlie.brown@email.com');
 
-UPDATE Customers
-SET Email = 'alice.johnson@new.com'
-WHERE CustomerID = 1;
-
 DELETE FROM Customers
 WHERE CustomerID = 3;
 
